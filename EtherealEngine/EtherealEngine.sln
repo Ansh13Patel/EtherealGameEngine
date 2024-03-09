@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33801.447
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtherealEditor", "EtherealEditor\EtherealEditor.csproj", "{B399B36B-AD18-4DD8-9C11-2E6D6B86B19B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{26479592-4690-470E-9436-8F6AE33F2F59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26479592-4690-470E-9436-8F6AE33F2F59}.Debug|x64.ActiveCfg = Debug|x64
+		{26479592-4690-470E-9436-8F6AE33F2F59}.Debug|x64.Build.0 = Debug|x64
+		{26479592-4690-470E-9436-8F6AE33F2F59}.Release|x64.ActiveCfg = Release|x64
+		{26479592-4690-470E-9436-8F6AE33F2F59}.Release|x64.Build.0 = Release|x64
+		{B399B36B-AD18-4DD8-9C11-2E6D6B86B19B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B399B36B-AD18-4DD8-9C11-2E6D6B86B19B}.Debug|x64.Build.0 = Debug|Any CPU
+		{B399B36B-AD18-4DD8-9C11-2E6D6B86B19B}.Release|x64.ActiveCfg = Release|Any CPU
+		{B399B36B-AD18-4DD8-9C11-2E6D6B86B19B}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC9A41FC-B9C5-450C-95CA-33FCDCDEAE13}
+	EndGlobalSection
+EndGlobal
