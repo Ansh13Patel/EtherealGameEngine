@@ -1,24 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace EtherealEditor.GameProject
 {
-    /// <summary>
-    /// Interaction logic for NewProjectView.xaml
-    /// </summary>
-    public partial class NewProjectView : UserControl
+    public partial class NewProjectView : System.Windows.Controls.UserControl
     {
         public NewProjectView()
         {
@@ -32,11 +20,27 @@ namespace EtherealEditor.GameProject
             bool dialogResult = false;
             var win = Window.GetWindow(this);
 
-            if (String.IsNullOrEmpty(projectPath))
+            if (!String.IsNullOrEmpty(projectPath))
+            {
                 dialogResult = true;
+                var project = OpenProject.Open(new ProjectData { ProjectName = vm.ProjectName, ProjectPath = projectPath });
+                win.DataContext = project;
+            }
 
             win.DialogResult = dialogResult;
             win.Close();
+        }
+
+        private void OnBrowse_Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (var dialog = new FolderBrowserDialog())
+            {
+                DialogResult result = dialog.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
+                {
+                    PathTextBox.Text = dialog.SelectedPath;
+                }
+            }
         }
     }
 }

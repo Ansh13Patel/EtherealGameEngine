@@ -182,7 +182,7 @@ namespace EtherealEditor.GameProject
 
                 var projectxml = File.ReadAllText(template.ProjectFilePath);
                 projectxml = String.Format(projectxml, ProjectName, ProjectPath);
-                var projectPath = Path.GetFullPath(Path.Combine(path, $"{ProjectName} {Project.Extension}"));
+                var projectPath = Path.GetFullPath(Path.Combine(path, $"{ProjectName}{Project.Extension}"));
                 File.WriteAllText(projectPath, projectxml);
 
                 return path;

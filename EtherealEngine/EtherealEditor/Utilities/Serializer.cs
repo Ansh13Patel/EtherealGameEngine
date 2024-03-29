@@ -13,9 +13,10 @@ namespace EtherealEditor.Utilities
     {
         public static void ToFile<T> (T instance, string path)
         {
+            FileStream fs = null;
             try
             {
-                var fs = new FileStream(path, FileMode.Create);
+                fs = new FileStream(path, FileMode.Create);
                 var serializer = new DataContractSerializer(typeof(T));
                 serializer.WriteObject(fs, instance);
             }
@@ -23,13 +24,18 @@ namespace EtherealEditor.Utilities
             {
                 Debug.WriteLine(e.Message);
             }
+            finally
+            {
+                fs?.Dispose();
+            }
         }
 
         public static T FromFile<T> (string path)
         {
+            FileStream fs = null;
             try
             {
-                var fs = new FileStream(path, FileMode.Open);
+                fs = new FileStream(path, FileMode.Open);
                 var serializer = new DataContractSerializer(typeof(T));
                 T instance = (T)serializer.ReadObject(fs);
                 return instance;
@@ -38,6 +44,10 @@ namespace EtherealEditor.Utilities
             {
                 Debug.WriteLine(e.Message);
                 return default(T);
+            }
+            finally
+            {
+                fs?.Dispose();
             }
         }
     }
