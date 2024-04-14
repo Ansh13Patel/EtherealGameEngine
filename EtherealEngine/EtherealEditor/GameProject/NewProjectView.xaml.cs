@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace EtherealEditor.GameProject
@@ -11,6 +12,17 @@ namespace EtherealEditor.GameProject
         public NewProjectView()
         {
             InitializeComponent();
+
+            templateListBox.ItemContainerGenerator.StatusChanged += ListBoxItemStatusChanged;
+        }
+
+        private void ListBoxItemStatusChanged(object sender, EventArgs e)
+        {
+            if (templateListBox.ItemContainerGenerator.Status == GeneratorStatus.ContainersGenerated)
+            {
+                var item = templateListBox.ItemContainerGenerator.ContainerFromIndex(templateListBox.SelectedIndex) as ListBoxItem;
+                item?.Focus();
+            }
         }
 
         private void OnCreate_Button_Click(object sender, RoutedEventArgs e)

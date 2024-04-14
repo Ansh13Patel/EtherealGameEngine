@@ -42,6 +42,17 @@ namespace EtherealEditor.GameProject
         private ObservableCollection<Scene> _scenes = new ObservableCollection<Scene>();
         public ReadOnlyObservableCollection<Scene> Scenes { get; private set; }
 
+        public void AddScene(string SceneName)
+        {
+            Debug.Assert(!String.IsNullOrEmpty(SceneName.Trim()));
+            _scenes.Add(new Scene(this, SceneName));
+        }
+
+        public void RemoveScene(Scene scene)
+        {
+            _scenes.Remove(scene);
+        }
+
         public static Project Current => Application.Current.MainWindow.DataContext as Project;
 
         public Project(string name, string path)
